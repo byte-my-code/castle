@@ -1,0 +1,19 @@
+TODO for Castle Escape game
+
+Application. The game application, called from main
+
+    - DONE Basic Skeleton (with init, run, render, update)
+    - DONE Make singleton
+    - Create a proper time based system for delta time
+
+
+RenderWindow. Implement a render target based on SDL2
+
+    - DONE Create a device window
+    - DONE Create a hardware acceerated renderer
+    - Handle fullscreen (Desktop Resolution)
+    - Handle system events
+    - Pass unhandled events on to the application
+    - DONE Cleanup memory alloc (SDL2)
+    - DONE Hide the mouse pointer, and show it at program end
+    
