@@ -26,7 +26,7 @@ private:
 
   void init();
 
-  void update();
+  void update(float dt);
   void render();
 
   void cleanup();

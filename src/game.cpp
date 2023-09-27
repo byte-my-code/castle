@@ -2,6 +2,7 @@
 #include "renderwindow.h"
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 #include <cstdlib>
 #include <exception>
 #include <ios>
@@ -20,19 +21,15 @@ void print_verinfo() {
 void print_verinfo() {}
 #endif
 
-
-
 Game *Game::spInstance = nullptr;
 
-
-Game* Game::getInstance() {
+Game *Game::getInstance() {
 
   if (spInstance == nullptr)
     spInstance = new Game();
 
   return spInstance;
 }
-
 
 void Game::destroy() {
 
@@ -41,7 +38,6 @@ void Game::destroy() {
 
   spInstance = nullptr;
 }
-
 
 Game::Game() {}
 
@@ -56,18 +52,26 @@ void Game::run() {
 #ifdef DEBUG_BUILD
   print_verinfo();
 #endif
-  
 
   // init the application
   init();
 
+  u32 lastUpdate = SDL_GetTicks();
+
   while (running) {
 
-    update();
+    // Process mouse/keyboard events
+    window->update();
+
+    // Physics delta time
+    u32 current = SDL_GetTicks();
+    float dt = (current - lastUpdate) / 1000.0f;
+
+    update(dt);
+
+    lastUpdate = current;
 
     render();
-
-    SDL_Delay(10);
   }
 }
 
@@ -75,22 +79,17 @@ void Game::init() {
 
   try {
     window = new RenderWindow(800, 600);
-  }
-  catch (const std::exception& e) {
+  } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
     exit(EXIT_FAILURE);
-  }  
+  }
 
   window->showPointer(false);
 
   running = true;
 }
 
-void Game::update() {
-
-  window->update();
-  
-}
+void Game::update(float dt) {}
 
 void Game::render() {
 
