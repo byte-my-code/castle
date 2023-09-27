@@ -3,6 +3,7 @@
 #include "config.h"
 
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_mouse.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_video.h>
 #include <stdexcept>
@@ -75,6 +76,18 @@ void RenderWindow::setClearColor(u8 r, u8 g, u8 b, u8 a) {
 void RenderWindow::shouldClose() {
 
   Game::getInstance()->stopRunning();
+
 }
 
 
+void RenderWindow::showPointer(bool yesno)    {
+
+  if (yesno) {
+    SDL_ShowCursor(SDL_ENABLE);
+    pointer = true;
+  }
+  else {
+    SDL_ShowCursor(SDL_DISABLE);
+    pointer = false;
+  }    
+}

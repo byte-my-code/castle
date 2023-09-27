@@ -4,6 +4,7 @@
 #include <SDL2/SDL.h>
 #include <cstdlib>
 #include <exception>
+#include <ios>
 #include <iostream>
 
 #ifdef DEBUG_BUILD
@@ -80,6 +81,8 @@ void Game::init() {
     exit(EXIT_FAILURE);
   }  
 
+  window->showPointer(false);
+
   running = true;
 }
 
@@ -99,6 +102,8 @@ void Game::render() {
 }
 
 void Game::cleanup() {
+
+  window->showPointer(true);
 
   // RenderWindow should always be last
   delete window;

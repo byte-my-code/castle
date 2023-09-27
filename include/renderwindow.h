@@ -25,6 +25,10 @@ public:
   bool isClosed() { return closed; }
 
   void shouldClose();
+
+  void showPointer(bool yesno=true);
+
+  bool pointerVisible() { return pointer; }
   
 private:
   SDL_Window* window;
@@ -33,6 +37,7 @@ private:
   u16 height;
   bool fullscreen {false};
   bool closed {true}; 
+  bool pointer { false };
   
   
 };
