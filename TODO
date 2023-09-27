@@ -4,7 +4,7 @@ Application. The game application, called from main
 
     - DONE Basic Skeleton (with init, run, render, update)
     - DONE Make singleton
-    - Create a proper time based system for delta time
+    - DONE Create a proper time based system for delta time
 
 
 RenderWindow. Implement a render target based on SDL2
