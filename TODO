@@ -16,4 +16,16 @@ RenderWindow. Implement a render target based on SDL2
     - Pass unhandled events on to the application
     - DONE Cleanup memory alloc (SDL2)
     - DONE Hide the mouse pointer, and show it at program end
-    
+
+Event Handling. Implement an event system that can pass events to those whoe care about them.
+
+    - Event base class. Should containt at least the following -
+        * Name (for debug?)
+        * Type (ie KeyPress, MouseMove, WindowMessage etc)
+        * data (if for KeyPress, this will be the key code, MouseMove will be mouse coordinates or offset)
+
+    - EventDispatcher class. An object that can generate events - Display, Input classes for example
+    - EventReceiver Class. An object that wants to know about a certain event
+    - EventKernel class. The main event loop, receives events and dispatches to receivers
+        * Update. Runs every frame and passes any events out to receivers.
+        * 
