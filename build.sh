@@ -11,7 +11,7 @@ g++ -c $cxxflags src/renderwindow.cpp -o build/renderwindow.o
 g++ -c $cxxflags src/game.cpp -o build/game.o
 g++ -c $cxxflags src/main.cpp -o build/main.o
 
-g++ *.o -o Castle $ldflags
+g++ build/*.o -o Castle $ldflags
 
 
 if [ -f Castle ]; then
